@@ -1,0 +1,56 @@
+body {
+  background-color: #F5F5F5;
+}
+
+.main_box_stepper {
+  background-color: white;
+
+}
+
+.upload_data_button {
+  color: #ef9e13;
+  background: transparent;
+  border-left: 2px;
+  border-right: 2px;
+  border-color: #f7e96d;
+}
+
+
+.navbar_div {
+  margin-bottom: 10vw;
+}
+
+.first_div {
+  margin: 10vw;
+}
+
+/* Estilos más específicos para la barra de navegación */
+body .custom-navbar {
+  background-color: rgba(248, 187, 61, 0.8)!important; /* Fondo naranja translúcido */
+  box-shadow: 0px 2px 4px rgba(128, 64, 0, 0.5) !important; /* Sombra */
+}
+
+/* Estilos más específicos para la barra de herramientas (toolbar) */
+body .custom-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px; /* Padding interno */
+}
+
+/* Estilos más específicos para el título de la barra de navegación */
+body .navbar-title {
+  font-weight: bold;
+  color: #fff !important; /* Color de texto blanco */
+}
+
+/* Estilos más específicos para el botón de avatar */
+body .avatar-button {
+  color: orange !important; /* Color de icono */
+}
+
+/* Estilos más específicos para el icono de avatar dentro del botón */
+body .avatar-icon {
+  background-color: #fff !important; /* Fondo blanco del avatar */
+  color: orange !important; /* Color de icono */
+}
