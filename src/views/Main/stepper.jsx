@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createTheme } from "@mui/material/styles";
 import "animate.css";
+import { invoke } from "@tauri-apps/api";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -10,7 +11,6 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
 const steps = ["Seleccionar Trámite", "Recibir Código", "Completar Trámite"];
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -19,7 +19,7 @@ const theme = createTheme({
   },
 });
 
-export default function First_step() {
+export default function StepperComponent() {
   const [currentStep, setCurrentStep] = React.useState(0);
 
   const handleStep = (step) => () => {
@@ -37,14 +37,22 @@ export default function First_step() {
   };
 
   const handleStartTramite = () => {
+    invoke(`init_session`)
     handleNext();
   };
 
   const handleContinueTramite = () => {
+    invoke(`continue_session`)
     setCurrentStep(2);
   };
 
   const handleReceiveCode = () => {
+    invoke(``)
+    handleNext();
+  };
+
+  const handlePutTheCode = () => {
+    invoke(`end_session`)
     handleNext();
   };
 
@@ -136,7 +144,7 @@ export default function First_step() {
                 <Button
                   className="animate__animated animate__fadeInUp"
                   sx={{ color: "#f1b61c", fontSize: 18, borderBottom: 2 }}
-                  onClick={handleReceiveCode}
+                  onClick={handlePutTheCode}
                 >
                   Introducir Codigo
                 </Button>
