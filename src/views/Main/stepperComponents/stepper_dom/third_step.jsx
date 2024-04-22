@@ -1,0 +1,146 @@
+import React from 'react'
+import { useState } from 'react';
+import { encryptCode } from "../back_fn/encriptar_codigo";
+import { decryptCode } from "../back_fn/decriptar_codigo";
+
+import LoadingButton from "@mui/lab/LoadingButton";
+import {
+  Box,
+  Typography,
+  Grid,
+  Input,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+import AppStateContext, {useAppState} from '../../../../AppStateContext';
+
+const Third_step = () => {
+
+  const {
+    currentStep,
+    setCurrentStep,
+    key,
+    error,
+    setError,
+    isLoading,
+    setIsLoading,
+  } = useAppState();
+
+  const [inputType, setInputType] = useState("password");
+
+  const changeInput = () => {
+    if (inputType === "text") {
+      setInputType("password");
+    } else setInputType("text");
+  };
+
+  return (
+    <Grid item sx={{}}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              mx: "auto",
+              width: "100%",
+              py: 5,
+            }}
+          >
+            <Typography
+              sx={{ textAlign: "center", fontSize: "140%", fontWeight: "bold", color: "darkgray"}}
+            >
+              El resultado de su clave compartida:
+            </Typography>
+
+            <Box id="hola" sx={{ width: "100%", mx: "auto" }}>
+              <Input
+                sx={{ width: "100%", fontSize: "120%" }}
+                defaultValue={key}
+                placeholder={`Pongo su clave aqui`}
+                type={inputType}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton onClick={changeInput} edge="end">
+                      {changeInput ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+              <LoadingButton
+                loading={isLoading === "terminar" ? true : false}
+                color="primary"
+                onClick={() => encryptCode(key, setError, setIsLoading)}
+                sx={{
+                  bgcolor: "#fff4d6",
+                  transition: "background-color 0.3 ease",
+                  "&:hover": { backgroundColor: "white" },
+                  mt: 2,
+                  mr: 2,
+                  width: "100%",
+                  borderBottom: 3,
+                  color: "#f1b61c",
+                  boxShadow: "3",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: isLoading === "iniciar" ? "transparent" : "#b08004",
+                    fontWeight: "medium",
+                  }}
+                  id="end"
+                >
+                  Cifrar Archivo
+                </Typography>
+              </LoadingButton>
+
+              <LoadingButton
+                loading={isLoading === "terminar" ? true : false}
+                color="primary"
+                onClick={() => decryptCode(key, setError, setIsLoading)}
+                sx={{
+                  bgcolor: "#fff4d6",
+                  transition: "background-color 0.3 ease",
+                  "&:hover": { backgroundColor: "white" },
+                  mt: 2,
+                  ml: 2,
+                  width: "100%",
+                  borderBottom: 3,
+                  color: "#f1b61c",
+                  boxShadow: "3",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: isLoading === "iniciar" ? "transparent" : "#b08004",
+                    fontWeight: "medium",
+                  }}
+                  id="end"
+                >
+                  Descifrar Archivo
+                </Typography>
+              </LoadingButton>
+            </Box>
+            {error && (
+              <Box>
+                <Typography
+                  sx={{
+                    marginTop: "10px",
+                    color: "#ff0033",
+                    textTransform: "capitalize",
+                    letterSpacing: 1,
+                  }}
+                >
+                  {error}
+                </Typography>
+              </Box>
+            )}
+          </Box>
+        </Grid>
+      );
+}
+
+export default Third_step;

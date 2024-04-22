@@ -1,26 +1,19 @@
 import * as React from "react";
-import { useState } from "react";
-import { invoke } from "@tauri-apps/api/tauri";
-import "./styles.css";
+import { AppStateProvider } from "./AppStateContext";
 import Navbar from "./views/Navbar/navbar";
 import StepperComponent from "./views/Main/stepper";
+import "./styles.css";
 
 function AppLayout() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-  }
-
   return (
-    <div className="container">
-      <Navbar />
-      <div className="first_div">
-        <StepperComponent />
+    <AppStateProvider>
+      <div className="container">
+        <Navbar />
+        <div className="first_div">
+          <StepperComponent />
+        </div>
       </div>
-    </div>
+    </AppStateProvider>
   );
 }
 
