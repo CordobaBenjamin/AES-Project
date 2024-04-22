@@ -6,12 +6,9 @@ export const decryptCode = async (key, setError, setIsLoading) => {
 
     try {
       let inputDirectory = await open({
-        directory: true,
-        filters: [{name: "keyex", extensions: ["keyex"],},],
       });
 
       let outputDirectory = await save({
-        filters: [{name: "keyex",extensions: ["keyex"],},],
       });
 
       if (inputDirectory == null || outputDirectory == null) {

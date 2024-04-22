@@ -5,8 +5,7 @@ import { open, save } from "@tauri-apps/api/dialog";
 export const encryptCode = async (key, setError, setIsLoading) => {
     try {
       let inputDirectory = await open({
-        directory: true,
-        filters: [{name: "keyex", extensions: ["keyex"],},],
+  
       });
 
       let outputDirectory = await save({
