@@ -1,32 +1,29 @@
 import { React } from "react";
-
 import {
   Box,
-  Typography,
   Grid,
   Stepper,
   Step,
   StepButton,
 } from "@mui/material";
-import First_step from "./stepperComponents/stepper_dom/first_step";
-import Second_step from "./stepperComponents/stepper_dom/second_step";
-import Third_step from "./stepperComponents/stepper_dom/third_step";
+import FirstStep from "./stepperComponents/stepper_dom/first_step";
+import SecondStep from "./stepperComponents/stepper_dom/second_step";
+import ThirdStep from "./stepperComponents/stepper_dom/third_step";
 import AppStateContext, { useAppState } from "../../AppStateContext";
-
 import "animate.css";
 
 const steps = ["Primer paso", "Segundo paso", "Tercer paso"];
 const StepperComponent = () => {
-  const { currentStep, isLoading } = useAppState();
+  const {currentStep,} = useAppState();
 
-  const ButtonSteps = () => {
+  const FunctionalButtonSteps = () => {
     switch (currentStep) {
       case 0:
-        return <First_step />;
+        return <FirstStep />;
       case 1:
-        return <Second_step />;
+        return <SecondStep />;
       case 2:
-        return <Third_step />;
+        return <ThirdStep />;
       default:
         return "No se encontro la variable 'currentStep' Revisar 'ButtonStep'";
     }
@@ -72,7 +69,7 @@ const StepperComponent = () => {
           }}
         >
           <Grid container spacing={2} justifyContent="center">
-            <ButtonSteps />
+            <FunctionalButtonSteps />
           </Grid>
 
         </Box>

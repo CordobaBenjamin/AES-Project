@@ -31,15 +31,14 @@ const randomNameGenerator = () => {
   return `${adjetive}_${sustantive}_${randomNumber}`;
 }
 
-export const handleStartTramite = async (setError, setUserName, setIsLoading, setCurrentStep) => {
+export const handleStart = async (setError, setUserName, setIsLoading, setCurrentStep) => {
     try {
       let path = await save({
         filters: [{ name: "keyex", extensions: ["keyex"],},],
       });
 
       let randomName = randomNameGenerator();
-  
-  
+
       if (path == null)  {setError("Es necesario que seleccione un directorio.");}
         else {
           setIsLoading("iniciar");

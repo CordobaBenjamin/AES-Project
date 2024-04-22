@@ -1,12 +1,11 @@
 import React from "react";
-import { useState } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Box, Typography } from "@mui/material";
-import { handleStartTramite } from "../back_fn/iniciar_intercambio";
-import { handleContinueTramite } from "../back_fn/continuar_tramite";
+import { handleStart } from "../back_functions/handleStart";
+import { handleContinue } from "../back_functions/handleContinueTramite";
 import AppStateContext, { useAppState } from "../../../../AppStateContext";
 
-const First_step = () => {
+const FirstStep = () => {
   const {
     setCurrentStep,
     setKey,
@@ -38,7 +37,7 @@ const First_step = () => {
         loading={isLoading === "iniciar" ? true : false}
         disabled={isLoading === "continuar"}
         onClick={() =>
-          handleStartTramite(
+          handleStart(
             setError,
             setUserName,
             setIsLoading,
@@ -84,7 +83,7 @@ const First_step = () => {
         loading={isLoading === "continuar" ? true : false}
         disabled={isLoading === "iniciar"}
         onClick={() =>
-          handleContinueTramite(setKey, setError, setIsLoading, setCurrentStep)
+          handleContinue(setKey, setError, setIsLoading, setCurrentStep)
         }
         variant=""
         sx={{
@@ -132,4 +131,4 @@ const First_step = () => {
   );
 };
 
-export default First_step;
+export default FirstStep;

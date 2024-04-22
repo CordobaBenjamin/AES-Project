@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
-import { encryptCode } from "../back_fn/encriptar_codigo";
-import { decryptCode } from "../back_fn/decriptar_codigo";
+import { encryptCode } from "../back_functions/encryptFunction";
+import { decryptCode } from "../back_functions/decryptFunction";
 
 import LoadingButton from "@mui/lab/LoadingButton";
 import {
@@ -16,7 +16,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import AppStateContext, {useAppState} from '../../../../AppStateContext';
 
-const Third_step = () => {
+const ThirdStep = () => {
 
   const {
     currentStep,
@@ -143,4 +143,4 @@ const Third_step = () => {
       );
 }
 
-export default Third_step;
+export default ThirdStep;

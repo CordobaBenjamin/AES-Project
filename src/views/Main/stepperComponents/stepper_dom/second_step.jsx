@@ -1,5 +1,5 @@
 import React from 'react'
-import { handleGetCode } from "../back_fn/recibir_tramite";
+import { handleGetCode } from "../back_functions/handleGet";
 import LoadingButton from "@mui/lab/LoadingButton";
 import {
   Box,
@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import AppStateContext, {useAppState} from '../../../../AppStateContext';
 
-const Second_step = () => {
+const SecondStep = () => {
 
     const {
       setCurrentStep,
@@ -80,4 +80,4 @@ const Second_step = () => {
       );
 }
 
-export default Second_step
+export default SecondStep

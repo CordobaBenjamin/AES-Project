@@ -10,7 +10,7 @@ export const handleGetCode = async (setKey, setError, setIsLoading, setCurrentSt
       });
 
       let sessionName = userName
-
+      
       if (path == null) {
         setError("Es necesario seleccionar un directorio.");
       } 
@@ -21,9 +21,7 @@ export const handleGetCode = async (setKey, setError, setIsLoading, setCurrentSt
         await setCurrentStep(2);
       }
 
-
     } catch (err) {
       setError(err);
-
     }
   };

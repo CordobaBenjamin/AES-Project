@@ -2,7 +2,7 @@ import React from "react";
 import { continue_session } from "../../../../api/services";
 import { open, save } from "@tauri-apps/api/dialog";
 
-export const handleContinueTramite = async (setKey, setError, setIsLoading, setCurrentStep) => {
+export const handleContinue = async (setKey, setError, setIsLoading, setCurrentStep) => {
 
   try {
 
