@@ -4,7 +4,7 @@ const AppStateContext = createContext();
 
 export const AppStateProvider = ({ children }) => {
   const [key, setKey] = useState("");
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(0);
   const [userName, setUserName] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState("");

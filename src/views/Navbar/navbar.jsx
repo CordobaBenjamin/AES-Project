@@ -11,7 +11,7 @@ const Navbar = () => {
       <AppBar position="static" className="custom-navbar">
         <Toolbar className="custom-toolbar">
           <Typography variant="h6" className="navbar-title animate__animated animate__pulse">
-          Demostracion de Criptografía simétrica
+          DEMO
           </Typography>
           <IconButton className="avatar-button">
             <Avatar className="avatar-icon">

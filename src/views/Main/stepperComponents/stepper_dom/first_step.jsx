@@ -29,20 +29,20 @@ const FirstStep = () => {
       }}
     >
       <Typography
-        sx={{ textAlign: "center", fontSize: "120%", fontWeight: "bold", color: "gray"}}
+        sx={{
+          textAlign: "center",
+          fontSize: "120%",
+          fontWeight: "bold",
+          color: "gray",
+        }}
       >
-        Seleccione un archivo para inciar el intercambio.
+        Inciar el intercambio.
       </Typography>
       <LoadingButton
         loading={isLoading === "iniciar" ? true : false}
         disabled={isLoading === "continuar"}
         onClick={() =>
-          handleStart(
-            setError,
-            setUserName,
-            setIsLoading,
-            setCurrentStep
-          )
+          handleStart(setError, setUserName, setIsLoading, setCurrentStep)
         }
         variant=""
         sx={{
@@ -74,9 +74,15 @@ const FirstStep = () => {
       </LoadingButton>
 
       <Typography
-         sx={{ textAlign: "center", fontSize: "120%", fontWeight: "bold", color: "gray", mt: 1}}
+        sx={{
+          textAlign: "center",
+          fontSize: "120%",
+          fontWeight: "bold",
+          color: "gray",
+          mt: 1,
+        }}
       >
-        Seleccione dos archivo para continuar el intercambio.
+        Continuar el intercambio (Seleccione un archivo)
       </Typography>
 
       <LoadingButton
@@ -114,19 +120,19 @@ const FirstStep = () => {
       </LoadingButton>
 
       {error && (
-            <Box>
-              <Typography
-                sx={{
-                  marginTop: "10px",
-                  color: "#ff0033",
-                  textTransform: "capitalize",
-                  letterSpacing: 1,
-                }}
-              >
-                {error}
-              </Typography>
-            </Box>
-          )}
+        <Box>
+          <Typography
+            sx={{
+              marginTop: "10px",
+              color: "#ff0033",
+              fontWeight: "bold",
+              letterSpacing: 1,
+            }}
+          >
+            *{error}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };

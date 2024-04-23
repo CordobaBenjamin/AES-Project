@@ -32,6 +32,7 @@ const randomNameGenerator = () => {
 }
 
 export const handleStart = async (setError, setUserName, setIsLoading, setCurrentStep) => {
+  setError(null)  
     try {
       let path = await save({
         filters: [{ name: "keyex", extensions: ["keyex"],},],
@@ -39,12 +40,13 @@ export const handleStart = async (setError, setUserName, setIsLoading, setCurren
 
       let randomName = randomNameGenerator();
 
-      if (path == null)  {setError("Es necesario que seleccione un directorio.");}
+      if (path == null)  {setError("Debe guardar el archivo que enviara.");}
         else {
           setIsLoading("iniciar");
           await init_session(randomName, path);
           await setUserName(randomName)
           await setCurrentStep(1);
+          setError(null)
         }
 
     } catch (err) {

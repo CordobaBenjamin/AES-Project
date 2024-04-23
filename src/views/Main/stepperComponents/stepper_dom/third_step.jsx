@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from 'react';
+import React from "react";
+import { useState } from "react";
 import { encryptCode } from "../back_functions/encryptFunction";
 import { decryptCode } from "../back_functions/decryptFunction";
 
@@ -14,13 +14,10 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-import AppStateContext, {useAppState} from '../../../../AppStateContext';
+import AppStateContext, { useAppState } from "../../../../AppStateContext";
 
 const ThirdStep = () => {
-
   const {
-    currentStep,
-    setCurrentStep,
     key,
     error,
     setError,
@@ -38,109 +35,115 @@ const ThirdStep = () => {
 
   return (
     <Grid item sx={{}}>
-          <Box
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          mx: "auto",
+          width: "100%",
+          py: 5,
+        }}
+      >
+        <Typography
+          sx={{
+            textAlign: "center",
+            fontSize: "140%",
+            fontWeight: "bold",
+            color: "darkgray",
+          }}
+        >
+          El resultado de su clave compartida:
+        </Typography>
+
+        <Box id="hola" sx={{ width: "100%", mx: "auto" }}>
+          <Input
+            sx={{ width: "100%", fontSize: "120%" }}
+            defaultValue={key}
+            placeholder={`Pongo su clave aqui`}
+            type={inputType}
+            readOnly 
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton onClick={changeInput} edge="end">
+                  {changeInput ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <LoadingButton
+            loading={isLoading === "terminar" ? true : false}
+            color="primary"
+            onClick={() => encryptCode(key, setError, setIsLoading)}
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              mx: "auto",
+              bgcolor: "#fff4d6",
+              transition: "background-color 0.3 ease",
+              "&:hover": { backgroundColor: "white" },
+              mt: 2,
+              mr: 2,
               width: "100%",
-              py: 5,
+              borderBottom: 3,
+              color: "#f1b61c",
+              boxShadow: "3",
             }}
           >
             <Typography
-              sx={{ textAlign: "center", fontSize: "140%", fontWeight: "bold", color: "darkgray"}}
+              sx={{
+                color: isLoading === "iniciar" ? "transparent" : "#b08004",
+                fontWeight: "medium",
+              }}
+              id="end"
             >
-              El resultado de su clave compartida:
+              Cifrar Archivo
             </Typography>
+          </LoadingButton>
 
-            <Box id="hola" sx={{ width: "100%", mx: "auto" }}>
-              <Input
-                sx={{ width: "100%", fontSize: "120%" }}
-                defaultValue={key}
-                placeholder={`Pongo su clave aqui`}
-                type={inputType}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton onClick={changeInput} edge="end">
-                      {changeInput ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </Box>
-            <Box sx={{ display: "flex", flexDirection: "row" }}>
-              <LoadingButton
-                loading={isLoading === "terminar" ? true : false}
-                color="primary"
-                onClick={() => encryptCode(key, setError, setIsLoading)}
-                sx={{
-                  bgcolor: "#fff4d6",
-                  transition: "background-color 0.3 ease",
-                  "&:hover": { backgroundColor: "white" },
-                  mt: 2,
-                  mr: 2,
-                  width: "100%",
-                  borderBottom: 3,
-                  color: "#f1b61c",
-                  boxShadow: "3",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: isLoading === "iniciar" ? "transparent" : "#b08004",
-                    fontWeight: "medium",
-                  }}
-                  id="end"
-                >
-                  Cifrar Archivo
-                </Typography>
-              </LoadingButton>
-
-              <LoadingButton
-                loading={isLoading === "terminar" ? true : false}
-                color="primary"
-                onClick={() => decryptCode(key, setError, setIsLoading)}
-                sx={{
-                  bgcolor: "#fff4d6",
-                  transition: "background-color 0.3 ease",
-                  "&:hover": { backgroundColor: "white" },
-                  mt: 2,
-                  ml: 2,
-                  width: "100%",
-                  borderBottom: 3,
-                  color: "#f1b61c",
-                  boxShadow: "3",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: isLoading === "iniciar" ? "transparent" : "#b08004",
-                    fontWeight: "medium",
-                  }}
-                  id="end"
-                >
-                  Descifrar Archivo
-                </Typography>
-              </LoadingButton>
-            </Box>
-            {error && (
-              <Box>
-                <Typography
-                  sx={{
-                    marginTop: "10px",
-                    color: "#ff0033",
-                    textTransform: "capitalize",
-                    letterSpacing: 1,
-                  }}
-                >
-                  {error}
-                </Typography>
-              </Box>
-            )}
+          <LoadingButton
+            loading={isLoading === "terminar" ? true : false}
+            color="primary"
+            onClick={() => decryptCode(key, setError, setIsLoading)}
+            sx={{
+              bgcolor: "#fff4d6",
+              transition: "background-color 0.3 ease",
+              "&:hover": { backgroundColor: "white" },
+              mt: 2,
+              ml: 2,
+              width: "100%",
+              borderBottom: 3,
+              color: "#f1b61c",
+              boxShadow: "3",
+            }}
+          >
+            <Typography
+              sx={{
+                color: isLoading === "iniciar" ? "transparent" : "#b08004",
+                fontWeight: "medium",
+              }}
+              id="end"
+            >
+              Descifrar Archivo
+            </Typography>
+          </LoadingButton>
+        </Box>
+        {error && (
+          <Box>
+            <Typography
+              sx={{
+                marginTop: "10px",
+                color: "#ff0033",
+                fontWeight: "bold",
+                letterSpacing: 1,
+              }}
+            >
+              *{error}
+            </Typography>
           </Box>
-        </Grid>
-      );
-}
+        )}
+      </Box>
+    </Grid>
+  );
+};
 
 export default ThirdStep;

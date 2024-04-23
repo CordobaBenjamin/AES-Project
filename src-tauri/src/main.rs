@@ -31,7 +31,7 @@ async fn encrypt_file_wrapper(input: String, output: String, key: String) -> Res
 
 #[tauri::command]
 async fn decrypt_file_wrapper(input: String, output: String, key: String) -> Result<(), String> {
-    keyexapi::encrypt_file_wrapper(input, output, key)
+    keyexapi::decrypt_file_wrapper(input, output, key)
 }
 
 fn main() {
