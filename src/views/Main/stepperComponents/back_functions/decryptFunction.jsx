@@ -19,7 +19,7 @@ export const decryptCode = async (key, setError, setIsLoading) => {
     });
 
     if (inputDirectory == null) {
-      setError("Debe seleccionar un archivo.");
+      setError("Debe seleccionar un archivo para descifrar.");
       return;
     }
 
@@ -30,7 +30,7 @@ export const decryptCode = async (key, setError, setIsLoading) => {
     });
 
     if (outputDirectory == null) {
-      setError("Debe seleccionar donde se guardara el archivo descifrado");
+      setError("Debe seleccionar dónde se guardará el archivo descifrado.");
     } else {
       setIsLoading("descifrar");
       await decrypt_file(inputDirectory, outputDirectory, key);

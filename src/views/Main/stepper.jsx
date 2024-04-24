@@ -19,7 +19,7 @@ const StepperComponent = () => {
       case 2:
         return <ThirdStep />;
       default:
-        return "No se encontro la variable 'currentStep' Revisar 'ButtonStep'";
+        return "No se encontró la variable 'currentStep'. Revisar 'ButtonStep'.'";
     }
   };
 

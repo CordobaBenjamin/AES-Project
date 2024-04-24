@@ -36,7 +36,7 @@ const FirstStep = () => {
           color: "gray",
         }}
       >
-        Inciar el intercambio.
+        Iniciar el intercambio.
       </Typography>
       <LoadingButton
         loading={isLoading === "iniciar" ? true : false}
@@ -69,7 +69,7 @@ const FirstStep = () => {
           }}
           id="start"
         >
-          Iniciar intercambio
+          Iniciar intercambio.
         </Typography>
       </LoadingButton>
 
@@ -82,7 +82,7 @@ const FirstStep = () => {
           mt: 1,
         }}
       >
-        Continuar el intercambio (Seleccione un archivo)
+        Continuar el intercambio (Seleccione un archivo).
       </Typography>
 
       <LoadingButton
@@ -115,7 +115,7 @@ const FirstStep = () => {
           }}
           id="continue"
         >
-          Continuar intercambio
+          Continuar intercambio.
         </Typography>
       </LoadingButton>
 

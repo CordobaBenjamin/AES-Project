@@ -46,7 +46,7 @@ export const handleStart = async (
     let randomName = randomNameGenerator();
 
     if (path == null) {
-      setError("Debe guardar el archivo que enviara.");
+      setError("Debe guardar el archivo que enviará.");
     } else {
       setIsLoading("iniciar");
       await init_session(randomName, path);

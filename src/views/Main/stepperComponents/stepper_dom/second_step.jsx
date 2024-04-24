@@ -35,7 +35,7 @@ const SecondStep = () => {
           color: "gray",
         }}
       >
-        Seleccione el archivo recibo para continuar.
+        Seleccione el archivo recibido para continuar.
       </Typography>
       <LoadingButton
         loading={isLoading === "recibir" ? true : false}
@@ -67,7 +67,7 @@ const SecondStep = () => {
           }}
           id="get"
         >
-          Recibi el Código
+          Recibí el código.
         </Typography>
       </LoadingButton>
 

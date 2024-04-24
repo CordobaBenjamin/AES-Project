@@ -15,7 +15,7 @@ export const handleContinue = async (
     });
 
     if (s_path == null) {
-      setError("Debe seleccionar el archivo recibido");
+      setError("Debe seleccionar el archivo recibido.");
     } else {
       await message(
         "Guarde el archivo necesario para terminar el intercambio.",

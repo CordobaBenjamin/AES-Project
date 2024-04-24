@@ -117,7 +117,7 @@ const ThirdStep = () => {
               }}
               id="end"
             >
-              Descifrar Archivo
+             Descifrar Archivo
             </Typography>
           </LoadingButton>
         </Box>
