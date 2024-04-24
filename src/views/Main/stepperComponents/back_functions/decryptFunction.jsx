@@ -1,6 +1,6 @@
 import React from "react";
 import { decrypt_file } from "../../../../api/services";
-import { open, save } from "@tauri-apps/api/dialog";
+import { open, save, message } from "@tauri-apps/api/dialog";
 
 const getFirstExtension = (path) => {
   if (typeof path !== "string" || !path.includes(".")) {
@@ -12,9 +12,11 @@ const getFirstExtension = (path) => {
 };
 
 export const decryptCode = async (key, setError, setIsLoading) => {
-  setError(null)
+  setError(null);
   try {
-    let inputDirectory = await open({filters: [{name: "cif", extensions: ["cif"]}]});
+    let inputDirectory = await open({
+      filters: [{ name: "cif", extensions: ["cif"] }],
+    });
 
     if (inputDirectory == null) {
       setError("Debe seleccionar un archivo.");
@@ -30,9 +32,17 @@ export const decryptCode = async (key, setError, setIsLoading) => {
     if (outputDirectory == null) {
       setError("Debe seleccionar donde se guardara el archivo descifrado");
     } else {
-      setIsLoading("encriptar");
+      setIsLoading("descifrar");
       await decrypt_file(inputDirectory, outputDirectory, key);
-      setError(null)
+      setError(null);
+      setIsLoading(null);
+      await message(
+        `Se ha descifrado el archivo en la ruta ${outputDirectory}`,
+        {
+          okLabel: "Aceptar",
+          title: "Descifrado Exitoso",
+        }
+      );
     }
   } catch (err) {
     setError(err);

@@ -8,9 +8,8 @@ export const handleContinue = async (
   setIsLoading,
   setCurrentStep
 ) => {
-  setError(null)
+  setError(null);
   try {
-
     let s_path = await open({
       filters: [{ name: "keyex", extensions: ["keyex"] }],
     });
@@ -18,10 +17,13 @@ export const handleContinue = async (
     if (s_path == null) {
       setError("Debe seleccionar el archivo recibido");
     } else {
-      await message("Guarde el archivo necesario para terminar el intercambio.", {
-        okLabel: "Aceptar",
-        title: "",
-      });
+      await message(
+        "Guarde el archivo necesario para terminar el intercambio.",
+        {
+          okLabel: "Aceptar",
+          title: "",
+        }
+      );
 
       let c_path = await save({
         filters: [{ name: "keyex", extensions: ["keyex"] }],
@@ -34,7 +36,7 @@ export const handleContinue = async (
         let key = await continue_session(s_path, c_path);
         setKey(key);
         await setCurrentStep(2);
-        setError(null)
+        setError(null);
       }
     }
   } catch (err) {
